@@ -14,9 +14,13 @@ namespace Reproductor
     public partial class frmReproductor : Form
     {
         bool reproducir = true;
+
+        OpenFileDialog cargar = new OpenFileDialog();
+
         public frmReproductor()
         {
             InitializeComponent();
+            wmpReproductor.uiMode = "none";
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -37,7 +41,7 @@ namespace Reproductor
 
         private void abrirToolStripButton_Click(object sender, EventArgs e)
         {
-            OpenFileDialog cargar = new OpenFileDialog();
+            
             cargar.InitialDirectory = "C:\\";
             cargar.Title = "Abrir Música";
             cargar.Filter = "Audio Files|*.mp3; *.wav";
