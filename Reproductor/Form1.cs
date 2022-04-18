@@ -14,8 +14,10 @@ namespace Reproductor
     public partial class frmReproductor : Form
     {
         bool reproducir = true;
+        int canciones;
 
         OpenFileDialog cargar = new OpenFileDialog();
+
 
         public frmReproductor()
         {
@@ -41,7 +43,8 @@ namespace Reproductor
 
         private void abrirToolStripButton_Click(object sender, EventArgs e)
         {
-            
+            canciones = -1;
+
             cargar.InitialDirectory = "C:\\";
             cargar.Title = "Abrir Música";
             cargar.Filter = "Audio Files|*.mp3; *.wav";
@@ -51,6 +54,11 @@ namespace Reproductor
             cargar.ShowDialog();
 
             ltbPlaylist.Items.AddRange(cargar.FileNames);
+
+            foreach (string item in ltbPlaylist.Items)
+            {
+                canciones++;
+            }
         }
 
         private void ltbPlaylist_SelectedIndexChanged(object sender, EventArgs e)
@@ -80,6 +88,8 @@ namespace Reproductor
                 btnReproducirPausa.Text = "Reproducir";
                 reproducir = true;
             }
+            
+            label1.Text = "canciones "+ Convert.ToString(canciones) + ", index " + Convert.ToString(ltbPlaylist.SelectedIndex);
         }
 
         private void btnRetroceder_Click(object sender, EventArgs e)
@@ -90,6 +100,22 @@ namespace Reproductor
         private void btnAvanzar_Click(object sender, EventArgs e)
         {
             wmpReproductor.Ctlcontrols.fastForward();
+        }
+
+        private void btnAnterior_Click(object sender, EventArgs e)
+        {
+            if (ltbPlaylist.SelectedIndex > 0)
+            {
+                ltbPlaylist.SelectedIndex = ltbPlaylist.SelectedIndex - 1;
+            }
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            if (ltbPlaylist.SelectedIndex < canciones)
+            {
+                ltbPlaylist.SelectedIndex = ltbPlaylist.SelectedIndex + 1;
+            }
         }
     }
 }

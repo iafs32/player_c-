@@ -41,6 +41,7 @@ namespace Reproductor
             this.btnAnterior = new System.Windows.Forms.Button();
             this.btnRetroceder = new System.Windows.Forms.Button();
             this.btnAvanzar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.wmpReproductor)).BeginInit();
             this.tspAbrir.SuspendLayout();
             this.SuspendLayout();
@@ -130,6 +131,7 @@ namespace Reproductor
             this.btnSiguiente.TabIndex = 5;
             this.btnSiguiente.Text = "Siguiente";
             this.btnSiguiente.UseVisualStyleBackColor = true;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
             // 
             // btnAnterior
             // 
@@ -140,6 +142,7 @@ namespace Reproductor
             this.btnAnterior.TabIndex = 6;
             this.btnAnterior.Text = "Anterior";
             this.btnAnterior.UseVisualStyleBackColor = true;
+            this.btnAnterior.Click += new System.EventHandler(this.btnAnterior_Click);
             // 
             // btnRetroceder
             // 
@@ -163,11 +166,21 @@ namespace Reproductor
             this.btnAvanzar.UseVisualStyleBackColor = true;
             this.btnAvanzar.Click += new System.EventHandler(this.btnAvanzar_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(740, 595);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 20);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "label1";
+            // 
             // frmReproductor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(978, 682);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnAvanzar);
             this.Controls.Add(this.btnRetroceder);
             this.Controls.Add(this.btnAnterior);
@@ -202,6 +215,7 @@ namespace Reproductor
         private System.Windows.Forms.Button btnAnterior;
         private System.Windows.Forms.Button btnRetroceder;
         private System.Windows.Forms.Button btnAvanzar;
+        private System.Windows.Forms.Label label1;
     }
 }
 
