@@ -52,6 +52,8 @@ namespace Reproductor
             this.wmpReproductor.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("wmpReproductor.OcxState")));
             this.wmpReproductor.Size = new System.Drawing.Size(472, 327);
             this.wmpReproductor.TabIndex = 0;
+            this.wmpReproductor.PlayStateChange += new AxWMPLib._WMPOCXEvents_PlayStateChangeEventHandler(this.wmpReproductor_PlayStateChange);
+            this.wmpReproductor.MediaChange += new AxWMPLib._WMPOCXEvents_MediaChangeEventHandler(this.wmpReproductor_MediaChange);
             // 
             // abrirToolStripButton
             // 
@@ -111,6 +113,7 @@ namespace Reproductor
             this.btnParar.TabIndex = 4;
             this.btnParar.Text = "Parar";
             this.btnParar.UseVisualStyleBackColor = true;
+            this.btnParar.Click += new System.EventHandler(this.btnParar_Click);
             // 
             // btnSiguiente
             // 

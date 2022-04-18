@@ -13,6 +13,7 @@ namespace Reproductor
 {
     public partial class frmReproductor : Form
     {
+        bool reproducir = true;
         public frmReproductor()
         {
             InitializeComponent();
@@ -20,7 +21,18 @@ namespace Reproductor
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            if (reproducir == true)
+            {
+                wmpReproductor.Ctlcontrols.play();
+                btnReproducirPausa.Text = "Pausa";
+                reproducir = false;
+            }
+            else
+            {
+                wmpReproductor.Ctlcontrols.pause();
+                btnReproducirPausa.Text = "Reproducir";
+                reproducir = true;
+            }
         }
 
         private void abrirToolStripButton_Click(object sender, EventArgs e)
@@ -40,6 +52,30 @@ namespace Reproductor
         private void ltbPlaylist_SelectedIndexChanged(object sender, EventArgs e)
         {
             wmpReproductor.URL = Convert.ToString(ltbPlaylist.SelectedItem);
+        }
+
+        private void wmpReproductor_MediaChange(object sender, AxWMPLib._WMPOCXEvents_MediaChangeEvent e)
+        {
+
+        }
+
+        private void btnParar_Click(object sender, EventArgs e)
+        {
+            wmpReproductor.Ctlcontrols.stop();
+        }
+
+        private void wmpReproductor_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
+        {
+            if (wmpReproductor.playState == WMPPlayState.wmppsPlaying)
+            {
+                btnReproducirPausa.Text = "Pausa";
+                reproducir = false;
+            }
+            else if ((wmpReproductor.playState == WMPPlayState.wmppsPaused) || (wmpReproductor.playState == WMPPlayState.wmppsStopped))
+            {
+                btnReproducirPausa.Text = "Reproducir";
+                reproducir = true;
+            }
         }
     }
 }
