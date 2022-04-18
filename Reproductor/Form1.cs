@@ -81,5 +81,15 @@ namespace Reproductor
                 reproducir = true;
             }
         }
+
+        private void btnRetroceder_Click(object sender, EventArgs e)
+        {
+            wmpReproductor.Ctlcontrols.fastReverse();
+        }
+
+        private void btnAvanzar_Click(object sender, EventArgs e)
+        {
+            wmpReproductor.Ctlcontrols.fastForward();
+        }
     }
 }
